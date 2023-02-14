@@ -73,42 +73,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-/*
-        //Action for reg button
-        regButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //send post request
-                String nameVal = name.getText().toString();
-                String phoneNumberVal = phoneNumber.getText().toString();
-                String passwordVal = password.getText().toString();
-
-                String url = "http://localhost:8080/demo/add?name=" + nameVal +
-                        "&phoneNumber=" + phoneNumberVal + "&password=" + passwordVal;
-
-                OkHttpClient client = new OkHttpClient();
-
-                RequestBody body = RequestBody.create(null, new byte[]{});
-                Request request = new Request.Builder()
-                        .url(url)
-                        .post(body)
-                        .build();
-                try (Response response = client.newCall(request).execute()) {
-                    response.body().string();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-                //Library.main(nameVal, phoneNumberVal, passwordVal);
-
-                //move to main page
-                Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-
-
-        });
-    }
-*/
 
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,33 +96,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    public void post(String postUrl) {
-        RequestBody body = RequestBody.create(null, new byte[]{});
-        Request request = new Request.Builder()
-                .url(postUrl)
-                .post(body)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            response.body().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        });
-    }
 
 
 
