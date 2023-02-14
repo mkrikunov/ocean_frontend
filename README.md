@@ -1,3 +1,3 @@
 Работаем)
 
-![image](https://user-images.githubusercontent.com/113344420/218819924-e983da67-368b-4f12-a304-07ebdb429d27.png)
+![image](https://user-images.githubusercontent.com/113344420/218820165-f44a8a21-9767-4258-bfa1-cf24379f5241.png)
