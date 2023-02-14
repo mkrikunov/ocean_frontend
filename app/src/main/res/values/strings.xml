@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Ocean</string>
+    <string name="Name">Name</string>
+    <string name="Surname">Surname</string>
+    <string name="Phone_number">Phone number</string>
+    <string name="Password">Password</string>
+    <string name="Lets_start">Let\'s start!</string>
+    <string name="Login">Login</string>
+    <string name="Login_footer">Don\'t have an account yet?</string>
+    <string name="Register_footer">Already have an account?</string>
+    <string name="Not_available_yet">Not available yet :(</string>
+    <string name="Rules">Rules</string>
+    <string name="loyalty_system">of the loyalty system</string>
+    <string name="info">    The discount applies to everything except the fruit, vegetables, dairy products "Pobochino", tobacco products.
+
+      </string>
+    <string name="info1">from 3000 to 3999 rubles – 3%,</string>
+    <string name="info2">from 4000 to 4999 rubles – 4%,</string>
+    <string name="info3">from 5000 to 5999 rubles – 5%,</string>
+    <string name="info4">from 6000 to 6999 rubles – 6%,</string>
+    <string name="info5">            over 7000 rubles – 7%.</string>
+</resources>
