@@ -7,14 +7,19 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 
 import kotlin.internal.IntrinsicConstEvaluation;
+import okhttp3.OkHttpClient;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText phoneNumber, password;
+
+    Button loginButton;
+
     boolean passwordVisible;
 
     @Override
@@ -24,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
 
         phoneNumber = findViewById(R.id.inputPhoneNumberL);
         password = findViewById(R.id.inputPasswordL);
+
+        loginButton = findViewById(R.id.imageButton2);
 
         //Operation of the icon hiding the password:
         password.setOnTouchListener(new View.OnTouchListener() {
@@ -54,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
     }
 

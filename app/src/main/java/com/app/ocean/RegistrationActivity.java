@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -23,12 +25,49 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class RegistrationActivity extends AppCompatActivity {
-
     EditText name, phoneNumber, password;
     Button regButton;
     boolean passwordVisible;
-
     OkHttpClient client;
+
+
+    //get ip method
+    public static String getIP() throws IOException {
+        Socket socket = new Socket();
+        socket.connect(new InetSocketAddress("google.com", 80));
+        String ip = (String)socket.getLocalAddress().getHostAddress();
+
+        return ip;
+    }
+
+    //post request method
+    public void post(String postUrl) {
+        RequestBody body = RequestBody.create(null, new byte[]{});
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(body)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+    }
 
 
     @Override
@@ -82,7 +121,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 String phoneNumberVal = phoneNumber.getText().toString();
                 String passwordVal = password.getText().toString();
 
-                String localhost = "192.168.43.119";
+                String localhost = "";
+                try {
+                    localhost = getIP();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 String url = "http://" + localhost + ":8080/demo/add?name=" + nameVal +
                         "&phoneNumber=" + phoneNumberVal + "&password=" + passwordVal;
@@ -98,33 +142,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    public void post(String postUrl) {
-        RequestBody body = RequestBody.create(null, new byte[]{});
-        Request request = new Request.Builder()
-                .url(postUrl)
-                .post(body)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            response.body().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        });
-    }
 
 
 
