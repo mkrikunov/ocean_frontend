@@ -82,7 +82,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String phoneNumberVal = phoneNumber.getText().toString();
                 String passwordVal = password.getText().toString();
 
-                String url = "http://localhost:8080/demo/add?name=" + nameVal +
+                String url = "http://192.168.43.119:8080/demo/add?name=" + nameVal +
                         "&phoneNumber=" + phoneNumberVal + "&password=" + passwordVal;
 
                 client = new OkHttpClient();
